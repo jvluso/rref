@@ -1,38 +1,36 @@
 module.exports = function (A) {
-    for (var k = 0, m = A[0].length; k < m; k++) {
-        for (var vmax, i = k, imax = k; i < m - 1; i++) {
-            var v = Math.abs(A[i][k]);
-            if (vmax === undefined || v > vmax) {
-                vmax = v;
-                imax = i;
-            }
-        }
-        if (imax === 0) return undefined; // singular matrix
-        var krow = A[k], irow = A[imax];
-        A[imax] = krow, A[k] = irow;
+    var rows = A.length;
+    var columns = A[0].length;
+    
+    var lead = 0;
+    for (var k = 0; k < rows; k++) {
+        if (columns <= lead) return;
         
-        for (var i = k + 1; i < m - 1; i++) {
-            for (var j = k; j < m - 1; j++) {
-                A[i][j] = A[i][j] - A[k][j] * (A[i][k] / A[k][k]);
+        var i = k;
+        while (A[i][lead] === 0) {
+            i++;
+            if (rows === i) {
+                i = k;
+                lead++;
+                if (columns === lead) return;
             }
-            A[i][k] = 0;
         }
+        var irow = A[i], krow = A[k];
+        A[i] = krow, A[k] = irow;
+         
+        var val = A[k][lead];
+        for (var j = 0; j < columns; j++) {
+            A[k][j] /= val;
+        }
+         
+        for (var i = 0; i < rows; i++) {
+            if (i === k) continue;
+            val = A[i][lead];
+            for (var j = 0; j < columns; j++) {
+                A[i][j] -= val * A[k][j];
+            }
+        }
+        lead++;
     }
     return A;
 };
-
-/*
-for k = 1 ... m:
-   Find pivot for column k:
-   i_max  := argmax (i = k ... m, abs(A[i, k]))
-   if A[i_max, k] = 0
-     error "Matrix is singular!"
-   swap rows(k, i_max)
-   Do for all rows below pivot:
-    for i = k + 1 ... m:
-     Do for all remaining elements in current row:
-      for j = k ... m:
-       A[i, j]  := A[i, j] - A[k, j] * (A[i, k] / A[k, k])
-     Fill lower triangular matrix with zeros:
-     A[i, k]  := 0
-*/
