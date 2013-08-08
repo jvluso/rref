@@ -1,0 +1,34 @@
+{
+  "name": "rref",
+  "version": "0.0.0",
+  "description": "solve systems of linear equations using gaussian elimination",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "tape": "~1.0.4"
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/substack/rref.git"
+  },
+  "homepage": "https://github.com/substack/rref",
+  "keywords": [
+    "gauss-jordan",
+    "reduced",
+    "row",
+    "echelon",
+    "form",
+    "gaussian",
+    "matrix",
+    "solve"
+  ],
+  "author": {
+    "name": "James Halliday",
+    "email": "mail@substack.net",
+    "url": "http://substack.net"
+  },
+  "license": "MIT"
+}
