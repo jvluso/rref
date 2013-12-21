@@ -1,6 +1,6 @@
 {
   "name": "rref",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "solve systems of linear equations using gaussian elimination",
   "main": "index.js",
   "devDependencies": {
