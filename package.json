@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "description": "solve systems of linear equations using gaussian elimination",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
-    "tape": "~1.0.4"
+    "tape": "~2.3.0"
   },
   "scripts": {
     "test": "tape test/*.js"
