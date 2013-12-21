@@ -2,6 +2,10 @@
 
 solve systems of linear equations using gaussian elimination
 
+[![testling badge](https://ci.testling.com/substack/rref.png)](https://ci.testling.com/substack/rref)
+
+[![build status](https://secure.travis-ci.org/substack/rref.png)](http://travis-ci.org/substack/rref)
+
 # example
 
 ``` js
