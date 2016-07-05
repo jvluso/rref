@@ -1,18 +1,22 @@
+
 module.exports = function (A) {
     var rows = A.length;
     var columns = A[0].length;
     
     var lead = 0;
     for (var k = 0; k < rows; k++) {
-        if (columns <= lead) return;
+        if (columns <= lead) return A;
         
         var i = k;
         while (A[i][lead] === 0) {
             i++;
-            if (rows === i) {
+            if (rows <= i) {
                 i = k;
                 lead++;
-                if (columns === lead) return;
+				console.log(i);
+				
+				console.log(lead);
+                if (columns <= lead) return A;
             }
         }
         var irow = A[i], krow = A[k];
@@ -31,6 +35,7 @@ module.exports = function (A) {
             }
         }
         lead++;
+		console.log(A);
     }
     return A;
 };
